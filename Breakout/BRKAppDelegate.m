@@ -2,8 +2,23 @@
 //  BRKAppDelegate.m
 //  Breakout
 //
+//
+// This file is part of Breakout.
+// 
+// Breakout is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Breakout is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with Breakout.  If not, see <http://www.gnu.org/licenses/>.
+//
 //  Created by Tommaso Piazza on 11/4/11.
-//  Copyright (c) 2011 ChalmersTH. All rights reserved.
 //
 
 #import "BRKAppDelegate.h"
@@ -17,6 +32,10 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    stageViewController = [[BRKStageViewController alloc] initWithNibName:@"BRKStage" bundle:nil];
+    
+    [self.window addSubview:stageViewController.view];
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -27,6 +46,8 @@
      Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
      Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
      */
+    
+    [stageViewController pause];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application

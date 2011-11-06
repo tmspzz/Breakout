@@ -1,5 +1,5 @@
 //
-//  BRKAppDelegate.h
+//  BRKPaddle.m
 //  Breakout
 //
 //
@@ -18,18 +18,34 @@
 // You should have received a copy of the GNU General Public License
 // along with Breakout.  If not, see <http://www.gnu.org/licenses/>.
 //
+//
 //  Created by Tommaso Piazza on 11/4/11.
 //
 
-#import <UIKit/UIKit.h>
-#import "BRKStageViewController.h"
+#import "BRKPaddle.h"
+
+@implementation BRKPaddle
+
+-(BRKPaddle *) init {
 
 
-@interface BRKAppDelegate : UIResponder <UIApplicationDelegate>
-{
-    BRKStageViewController *stageViewController;
+    if((self = [super init])){
+    
+    }
+
+    return self;
+}
+
+
++ (BRKPaddle *) blockAtPosition:(CGPoint) position withImageNamed:(NSString *) imgName {
+    
+    return [[BRKPaddle alloc] initAtPosition:position withImageNamed:imgName];
     
 }
 
-@property (strong, nonatomic) UIWindow *window;
+- (void) resetAtPosition:(CGPoint) position {
+    
+    self.frame = CGRectMake(position.x, position.y, blockView.frame.size.width, blockView.frame.size.height);
+}
+
 @end
